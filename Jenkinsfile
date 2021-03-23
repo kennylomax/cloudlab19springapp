@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh './mvnw build -DskipTests'
+        sh './mvnw install -DskipTests'
       }
     }
 
