@@ -132,6 +132,9 @@ docker ps'''
         sh '''echo "Files:"
 ls -la
 
+
+cat build.gradle
+
 ./gradlew sonarqube'''
       }
     }
