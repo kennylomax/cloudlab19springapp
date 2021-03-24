@@ -91,6 +91,7 @@ cp dist/* $APP_DIR/ROOT
 /usr/local/tomcat/bin/startup.sh
 
 '''
+        input(message: 'Ok for QA?', ok: 'Go go go!')
       }
     }
 
