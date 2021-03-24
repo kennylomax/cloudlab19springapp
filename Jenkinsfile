@@ -130,13 +130,9 @@ docker ps'''
     stage('SonarQueue') {
       steps {
         unstash 'stashingall'
-        sh '''echo "Files:"
-ls -la
-
-
-cat build.gradle
-
-./gradlew sonarqube'''
+        withSonarQubeEnv('SonarQube') {
+          sh "./gradlew sonarqube"
+        }
       }
     }
 
