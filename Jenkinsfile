@@ -48,6 +48,12 @@ touch "dist/client.js"
           }
         }
 
+        stage('stashingall') {
+          steps {
+            stash(includes: '**', name: 'stashingall')
+          }
+        }
+
       }
     }
 
@@ -123,10 +129,11 @@ docker ps'''
     stage('SonarQueue') {
       steps {
         sh 'sh "./gradlew sonarqube"'
+        unstash 'stashingall'
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         waitForQualityGate true
       }
