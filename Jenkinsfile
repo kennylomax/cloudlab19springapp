@@ -39,6 +39,13 @@ touch "dist/client.js"
           }
         }
 
+        stage('') {
+          steps {
+            sh 'echo "Docker file"'
+            stash(name: 'dockerfile', includes: 'Dockerfile')
+          }
+        }
+
       }
     }
 
@@ -99,6 +106,7 @@ cp dist/* $APP_DIR/ROOT
       steps {
         unstash 'client'
         unstash 'server'
+        unstash 'dockerfile'
         sh '''echo "deploying client:"
 ls -alFh dist
 echo "deploying server:"
