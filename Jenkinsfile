@@ -140,7 +140,7 @@ cat build.gradle
       }
     }
 
-    stage('error') {
+    stage('Waiting') {
       steps {
         waitForQualityGate true
       }
