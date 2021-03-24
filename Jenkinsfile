@@ -35,6 +35,37 @@ hello!
 EOF
 touch "dist/client.js"
 '''
+            stash(name: 'client', includes: '**/dist/*')
+          }
+        }
+
+      }
+    }
+
+    stage('Tests') {
+      parallel {
+        stage('Chrome') {
+          agent {
+            docker {
+              image 'selenium/standalone-chrome:latest'
+            }
+
+          }
+          steps {
+            sh '''echo \'mvn test -Dbrowser=chrome\'
+'''
+          }
+        }
+
+        stage('Firefox') {
+          agent {
+            docker {
+              image 'selenium/standalone-firefox:latest'
+            }
+
+          }
+          steps {
+            sh 'echo \'mvn test -Dbrowser=firefox\''
           }
         }
 
