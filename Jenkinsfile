@@ -103,6 +103,8 @@ cp dist/* $APP_DIR/ROOT
 ls -alFh dist
 echo "deploying server:"
 ls -alFh target'''
+        sh '''echo "Deploy bild docker thingy"
+docker ps'''
       }
     }
 
