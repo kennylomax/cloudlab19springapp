@@ -104,6 +104,7 @@ ls -alFh dist
 echo "deploying server:"
 ls -alFh target'''
         sh '''echo "Deploy bild docker thingy"
+docker build -t kenlomax/spring-boot-api-example:0.1.0-SNAPSHOT .
 docker ps'''
       }
     }
