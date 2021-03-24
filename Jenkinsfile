@@ -132,7 +132,7 @@ docker ps'''
         sh '''echo "Files:"
 ls -la
 
-sh "./gradlew sonarqube"'''
+./gradlew sonarqube'''
       }
     }
 
