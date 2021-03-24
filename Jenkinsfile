@@ -120,5 +120,17 @@ docker ps'''
       }
     }
 
+    stage('SonarQueue') {
+      steps {
+        sh 'sh "./gradlew sonarqube"'
+      }
+    }
+
+    stage('') {
+      steps {
+        waitForQualityGate true
+      }
+    }
+
   }
 }
