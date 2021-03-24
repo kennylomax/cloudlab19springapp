@@ -95,5 +95,16 @@ cp dist/* $APP_DIR/ROOT
       }
     }
 
+    stage('Deploy') {
+      steps {
+        unstash 'client'
+        unstash 'server'
+        sh '''echo "deploying client:"
+ls -alFh dist
+echo "deploying server:"
+ls -alFh target'''
+      }
+    }
+
   }
 }
