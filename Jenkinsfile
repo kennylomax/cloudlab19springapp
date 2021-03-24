@@ -48,6 +48,12 @@ touch "dist/client.js"
           }
         }
 
+        stage('stashingall') {
+          steps {
+            stash(includes: '**/gradlew ', name: 'stashingall')
+          }
+        }
+
       }
     }
 
@@ -117,6 +123,22 @@ ls -alFh target'''
 docker build -t kenlomax/spring-boot-api-example:0.1.0-SNAPSHOT .
 docker ps'''
         unstash 'target'
+      }
+    }
+
+    stage('SonarQueue') {
+      steps {
+        unstash 'stashingall'
+        sh '''echo "Files:"
+ls -la
+
+./gradlew sonarqube'''
+      }
+    }
+
+    stage('error') {
+      steps {
+        waitForQualityGate true
       }
     }
 
