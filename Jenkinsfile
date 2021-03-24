@@ -50,7 +50,7 @@ touch "dist/client.js"
 
         stage('stashingall') {
           steps {
-            stash(includes: '**', name: 'stashingall')
+            stash(includes: '**/gradlew ', name: 'stashingall')
           }
         }
 
