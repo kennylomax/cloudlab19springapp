@@ -43,6 +43,7 @@ touch "dist/client.js"
           steps {
             sh 'echo "Docker file"'
             stash(name: 'dockerfile', includes: 'Dockerfile')
+            sh './mvnw install -DskipTests'
             stash(includes: '**/target/*', name: 'target')
           }
         }
