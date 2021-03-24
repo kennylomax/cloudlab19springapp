@@ -51,6 +51,7 @@ touch "dist/client.js"
         stage('stashingall') {
           steps {
             stash(includes: '**/gradlew ', name: 'stashingall')
+            sh 'more build.gradle'
           }
         }
 
