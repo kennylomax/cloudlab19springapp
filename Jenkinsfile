@@ -39,10 +39,11 @@ touch "dist/client.js"
           }
         }
 
-        stage('') {
+        stage('docker') {
           steps {
             sh 'echo "Docker file"'
             stash(name: 'dockerfile', includes: 'Dockerfile')
+            stash(includes: '**/target/*', name: 'target')
           }
         }
 
@@ -114,6 +115,7 @@ ls -alFh target'''
         sh '''echo "Deploy bild docker thingy"
 docker build -t kenlomax/spring-boot-api-example:0.1.0-SNAPSHOT .
 docker ps'''
+        unstash 'target'
       }
     }
 
