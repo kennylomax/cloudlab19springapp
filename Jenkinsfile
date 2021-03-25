@@ -131,7 +131,10 @@ docker ps'''
       steps {
         unstash 'stashingall'
         withSonarQubeEnv('SonarQube') {
-          sh './gradlew sonarqube'
+          sh '''ls -la
+
+
+./gradlew sonarqube'''
         }
 
       }
