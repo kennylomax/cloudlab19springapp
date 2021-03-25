@@ -130,7 +130,7 @@ docker ps'''
     stage('SonarQueue') {
       steps {
         unstash 'stashingall'
-        withSonarQubeEnv(installationName: 'My SonarQube Server', envOnly: true) {
+        withSonarQubeEnv('SonarQube') {
           sh './gradlew sonarqube'
         }
 
